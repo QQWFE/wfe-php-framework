@@ -1,0 +1,21 @@
+<div class="blog-post">
+	<h2 class="blog-post-title">Tencent业务相关</h2>
+	<hr/>
+	<h4>获取基于微信的js-sdk：</h4>
+	<p>需要在配置文件中对业务的app_id和app_secret进行配置
+	<pre><code>
+'tencent' => array(
+	'app_id' => '[your_app_id]',
+	'app_secret' => '[your_app_secret]',
+),
+	</code></pre>
+	<p>在实际取用的过程中，可以通过框架内置的类库功能进行选用</p>
+	<pre><code>
+require_once ROOT_PATH."/core/Tencent/Jssdk/jssdk.php";
+$jssdk = new JSSDK(Config::get_config_value('tencent')['app_id'], 
+	Config::get_config_value('tencent')['app_secret']);
+$sign_package = $jssdk->GetSignPackage();		
+	</code></pre>
+	<p>输出的$sign_package即为有效的微信sdk验证token</p>
+	<hr/>
+</div>

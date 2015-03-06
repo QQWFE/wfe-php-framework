@@ -1,0 +1,50 @@
+<div class="blog-post">
+	<h2 class="blog-post-title">目录结构</h2>
+	<blockquote>
+	<p>
+	/application[应用层]
+	<br/>
+	----/configs[系统配置文件]<br/>
+	----/controller[系统控制器文件]<br/>
+	----/model[系统模型层文件]<br/>
+	----/view[系统视图文件]<br/>
+
+
+	/core[系统内核文件]
+	<br/>
+	/files[自定义文件存储]
+	<br/>
+	/other[文档或其它]
+	<br/>
+	/public[公共访问目录]<br/>
+	----/css<br/>
+	----/js<br/>
+	----/image<br/>
+	----index.php[web入口]<br/>
+	</p>
+	</blockquote>
+	
+	<p>
+	application为系统的应用层目录。<br/>
+	core为系统内核文件，除框架所用代码外，还可供自由扩展，可在系统加入第三方包，然后在core文件夹下开发自定义封装，即可使用。
+	</p>
+	
+	<hr/>
+	<h2 class="blog-post-title">命名规范</h2>
+	
+	<h3>控制层命名规范</h3>
+	<p>
+	控制层命名方式为（示例）：indexController.php<br/>
+	所有控制层需要通过集成Controller_Action类，亦可开发自己的控制器父类。<br/>
+	</p>
+	
+	<h3>视图层命名规范</h3>
+	<p>
+	对应的控制层文件需要在视图层建立文件目录，如控制器命名为：indexController则对应视图目录为view/index。<br/>
+	</p>
+	
+	<h3>内核命名规范</h3>
+	<p>
+	core内核目录下的文件，需保证首字母大写。如Application/FrontController.php则类名定义为Application_FrontController则在引用时系统可以实现自动加载。
+	</p>
+	</div>

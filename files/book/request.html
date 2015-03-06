@@ -1,0 +1,44 @@
+<div class="blog-post">
+	<h2 class="blog-post-title">获取请求</h2>
+	<p>获取post方式的请求：</p>
+	<pre><code>
+$param = $this->post_var([param_name], [xss_filter], [default]);
+
+[param_name]:参数名
+[xss_filter]:默认为false，为true时进行xss保护过滤
+[default]:当参数为空时的默认值
+	</code></pre>
+	
+	<hr/>
+	
+	<p>获取get方式的请求：</p>
+	<pre><code>
+$param = $this->get_var([param_name], [xss_filter], [default]);
+
+[param_name]:参数名
+[xss_filter]:默认为false，为true时进行xss保护过滤
+[default]:当参数为空时的默认值
+	</code></pre>
+	
+	<hr/>
+	
+	<p>获取request方式的请求：</p>
+	<pre><code>
+$param = $this->request_var([param_name], [xss_filter], [default]);
+
+[param_name]:参数名
+[xss_filter]:默认为false，为true时进行xss保护过滤
+[default]:当参数为空时的默认值
+	</code></pre>
+	
+	<hr/>
+	
+	<h2 class="blog-post-title">返回数据</h2>
+	<p>使用ajax-json的方式进行返回值输出</p>
+	<pre><code>
+$this->ajax([data], [code=1]);
+
+[data]:要返回的数据，数组
+[code]:返回的状态码，默认为1		
+	</code></pre>
+	</div>

@@ -1,0 +1,6 @@
+.settings/
+.buildpath
+*.swp
+.project
+.DS_Store
+

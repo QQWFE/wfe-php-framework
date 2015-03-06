@@ -1,0 +1,30 @@
+<div class="blog-post">
+	<h2 class="blog-post-title">URL配置</h2>
+	<p>URL在config中，可以使用normal和rewrite两种配置。</p>
+
+	<pre><code>
+'url_model' => 'rewrite',
+	</code></pre>
+	
+	<p>当设定为normal时，支持形如/index.php?c=index&a=index。</p>
+<p>当设定为rewrite时，支持形如/index/index的url规则。</p>
+
+<hr/>
+<h2 class="blog-post-title">URL参数传递</h2>
+<p>Normal方式:将参数用&amp;的方式进行连接，即可进行url的参数传递。</p>
+<p>Rewrite方式:将参数在controller/action后面，以[参数/值/参数/值]的方式进行连接，即可实现参数传递。</p>
+
+<hr/>
+
+<h2 class-"blog-post-title">URL生成函数</h2>
+<pre><code>
+$this->url([controller], [action], [param_data]);
+
+示例：$this->url('book', 'index', array('param' => 'base', 'id'=>3));
+
+[normal状态下]:生成/index.php?c=book&amp;a=index&amp;param=base&amp;id=3
+[rewrite状态下]:生成/book/index/param/base/id/3
+</code></pre>
+
+<p>如果程序确定了明确的url输出方式，直接书写要输出的url会获得更好的视图渲染性能。</p>
+	</div>

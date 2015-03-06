@@ -1,0 +1,119 @@
+<div class="blog-post">
+	<h2 class="blog-post-title">配置参数</h2>
+	
+	<p>
+	目前配置文件仅支持数组导入方式，未来还将支持多种配置文件方式。
+	</p>
+	
+	<pre>
+	<code>
+'debug' => true, [设定系统的调试模式，为true时打开全部error级别]
+    
+
+'url_model' => 'rewrite',
+[包括两种url模式，当设定为normal时，支持形如/index.php?c=index&a=index。]
+[当设定为rewrite时，支持形如/index/index的url规则。]
+
+'default_controller' => 'Index',
+'default_action' => 'show',
+[默认的控制器controller和方法action的配置]
+
+'db_host' => '127.0.0.1',		[数据库地址]
+'db_user' => 'root',			[数据库用户名]
+'db_pass' => '',			[数据库密码]
+'db_name' => 'wfe_framework',		[数据库名]
+'db_charset' => 'utf8',			[数据库字符集]
+[数据库相关配置，目前仅支持mysql，默认采用pdo方式连接]
+	
+'base_view' => array(
+    'website_title' => 'WFE-PHP-FRAMEWORK',	[网站全局名称]
+),
+[视图及第三方自定义配置项]
+	</code>
+	</pre>
+	
+	<p>
+	第三方配置项可通过自由的数组定义方式进行定义，配合系统全局config取用函数，即可方便的进行访问。
+	</p>
+	
+	<hr/>
+	
+	<h3>
+	系统配置项访问
+	</h3>
+	采用如下的方式即可取得配置项:
+	<pre><code>
+$config = Config::get_config_array();
+$config->db_host;
+	</code></pre>
+	
+	<br/>
+	
+	采用如下的方式便捷的获取一个配置参数：
+	<pre><code>
+Config::get_config_value($config_var);
+	</code></pre>
+	
+	亦可通过Application全局方式取得配置项:
+	<pre><code>
+Application::get_config_var('default_controller');
+	</code></pre>
+	
+	<hr/>
+	
+	<h2 class="blog-post-title">Apache主机定义</h2>
+	<pre><code>
+	
+	</code></pre>
+	
+	<hr/>
+	
+	<h2 class="blog-post-title">Nginx主机定义</h2>
+	
+	<pre><code>
+server {
+	server_name  [server_name];
+	charset utf-8;
+	root [root_path];
+	index index.html index.htm index.php;	
+
+	location / {
+	    try_files $uri $uri/ /index.php?$args;
+	}
+
+	location ~ \.php$ {
+	    root           html;
+	    fastcgi_pass   127.0.0.1:9000;
+	    fastcgi_index  index.php;
+	    fastcgi_param  SCRIPT_FILENAME [root_path];
+	    include        fastcgi_params;
+	}
+
+	location ~ /\.ht {
+	    deny  all;
+	}
+
+	error_log [error_log_path];
+	access_log [access_log_path]; 
+}
+	</code></pre>
+	
+	<hr/>
+	
+	<h3>.HTACCESS文件定义</h3>
+	<p>当需要进行url rewrite时候，需要通过htaccess文件进行定义：</p>
+	
+	<pre><code>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)(.+)::$
+RewriteRule ^(.*)$ - [E=BASE:%1]
+RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
+	</code></pre>
+	
+	
+	</div>

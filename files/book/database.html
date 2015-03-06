@@ -1,0 +1,33 @@
+<div class="blog-post">
+	<h2 class="blog-post-title">数据库操作</h2>
+	
+	<h3>连贯操作</h3>
+	
+	<p>获取一个数据表</p>
+	<pre><code>
+$this->table([table_name]);
+
+[table_name]:所要获取的数据表名称
+	</code></pre><hr/>
+	
+	<p>获取全部数据</p>
+	<pre><code>
+$this->table('menu')->fetch_all();
+
+返回表中的全部数据	
+	</code></pre><hr/>
+	
+	<p>插入一条数据</p>
+	<pre><code>
+$this->table([table_name])->insert([data]);
+
+[data]:所要插入数据的键值对。示例：
+$data = array(
+	'id' => 1,
+	'name' => $name,
+);
+	</code></pre><hr/>
+	
+	<h3>独立操作</h3>
+	
+	</div>
